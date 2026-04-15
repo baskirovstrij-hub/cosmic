@@ -2,9 +2,9 @@ import express from "express";
 import { createServer as createViteServer } from "vite";
 import path from "path";
 import { fileURLToPath } from "url";
-import { calculateNatalData } from "./src/services/astrologyService.ts";
-import { mapNatalDataToInterpretations } from "./src/services/interpretationService.ts";
-import { getDailyHoroscope } from "./src/services/horoscopeService.ts";
+import { calculateNatalData } from "./src/services/astrologyService.js";
+import { mapNatalDataToInterpretations } from "./src/services/interpretationService.js";
+import { getDailyHoroscope } from "./src/services/horoscopeService.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
