@@ -1,12 +1,26 @@
-import { PrismaClient } from '@prisma/client';
+import fs from 'fs';
+import path from 'path';
 
-const prisma = new PrismaClient();
+let interpretationsCache: any[] | null = null;
+
+function loadInterpretations() {
+  if (!interpretationsCache) {
+    try {
+      const jsonPath = path.join(process.cwd(), 'interpretations_seed.json');
+      const fileContent = fs.readFileSync(jsonPath, 'utf-8');
+      interpretationsCache = JSON.parse(fileContent);
+    } catch (error) {
+      console.error('Error loading interpretations JSON:', error);
+      interpretationsCache = [];
+    }
+  }
+  return interpretationsCache;
+}
 
 export async function getInterpretationByKey(key: string) {
   try {
-    const interpretation = await prisma.interpretation.findUnique({
-      where: { key },
-    });
+    const interpretations = loadInterpretations();
+    const interpretation = interpretations.find((item: any) => item.key === key);
     
     if (interpretation) {
       return {
