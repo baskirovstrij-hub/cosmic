@@ -28,6 +28,7 @@ async function startServer() {
 
       const natalData = await calculateNatalData(date, time, lat, lng);
       const interpretations = await mapNatalDataToInterpretations(natalData);
+      console.log(`Found ${interpretations.length} interpretations for natal data`);
       
       const sun = natalData.planets.find(p => p.name === 'Sun');
       const horoscope = sun ? await getDailyHoroscope(sun.longitude) : null;
