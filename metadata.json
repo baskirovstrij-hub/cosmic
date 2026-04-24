@@ -1,6 +1,6 @@
 {
-  "name": "Cosmic Destiny Explorer",
-  "description": "An interactive cosmic-themed application featuring a quiz and natal chart explorer.",
+  "name": "CosmicVibes",
+  "description": "Эстетичное приложение для исследования натальной карты, психотипов и совместимости в стиле Apple Magic.",
   "requestFramePermissions": [],
   "majorCapabilities": []
 }
